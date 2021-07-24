@@ -1,0 +1,25 @@
+<metal:page define-macro="master">
+  <tal:doctype tal:replace="structure string:&lt;!DOCTYPE html&gt;" />
+  <html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xml:lang="en"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    xmlns:metal="http://xml.zope.org/namespaces/metal"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    xmlns:v-on="http://vue.org/namespaces/vue"
+    class="no-js"
+    lang="en"
+  >
+
+  <head>
+    <title>hello</title>
+  </head>
+
+
+  <body>
+
+  </body>
+
+
+  </html>
+</metal:page>

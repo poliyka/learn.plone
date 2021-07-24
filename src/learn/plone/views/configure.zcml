@@ -1,0 +1,39 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="learn.plone">
+
+  -*- extra stuff goes here -*-
+
+  <browser:page
+    name="index"
+    for="*"
+    class=".index.Index"
+    permission="zope2.View"
+    layer="learn.plone.interfaces.ILearnPloneLayer"
+    />
+
+  <browser:page
+    for="*"
+    name="custom_main_template"
+    class=".main_template.CustomMainTemplate"
+    permission="zope.Public"
+    layer="learn.plone.interfaces.ILearnPloneLayer"
+    />
+    />
+
+
+  <!-- main_template.pt 無法 overrides, 暫解-->
+  <!-- https://github.com/plone/Products.CMFPlone/issues/2918 -->
+  <browser:page
+      for="*"
+      name="main_template"
+      class=".main_template.MainTemplate"
+      permission="zope.Public"
+      layer="learn.plone.interfaces.ILearnPloneLayer"
+      />
+
+
+
+</configure>

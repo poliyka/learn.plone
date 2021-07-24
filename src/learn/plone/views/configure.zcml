@@ -15,6 +15,22 @@
     />
 
   <browser:page
+    name="index_test"
+    for="*"
+    class=".index.IndexTest"
+    permission="zope2.View"
+    layer="learn.plone.interfaces.ILearnPloneLayer"
+    />
+
+  <browser:page
+    name="subpage"
+    for="*"
+    class=".index.SubPage"
+    permission="zope2.View"
+    layer="learn.plone.interfaces.ILearnPloneLayer"
+    />
+
+  <browser:page
     for="*"
     name="custom_main_template"
     class=".main_template.CustomMainTemplate"

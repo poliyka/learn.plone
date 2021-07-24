@@ -6,7 +6,7 @@ const STATIC_DIR = path.resolve(__dirname, "../browser/static/")
 
 module.exports = {
   // 部署應用時的基本路徑 URL，baseUrl從 Vue CLI 3.3 起，已棄用，使用publicPath來替代
-  publicPath: "${portal_url}/++plone++learn.plone/",
+  publicPath: "/++plone++learn.plone/",
 
   // build時構建檔案的目錄，構建時傳入 --no-clean 可關閉該行為
   outputDir: STATIC_DIR, // 當執行 vue-cli-service build 時生成的生產環境構建檔案的目錄

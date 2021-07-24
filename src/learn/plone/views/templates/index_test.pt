@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <?python
+    from plone import api
+    portal = api.portal.get()
+    portal_url = portal.portal_url()
+    ?>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="/++plone++learn.plone/favicon.ico">
+    <title>Index Page</title>
+  <link href="/++plone++learn.plone/js/chunk/chunk-vendors.chunk-vendors.3299404d.js" rel="preload" as="script" crossorigin><link href="/++plone++learn.plone/js/login/index.966ad5515fd109042a5f.js" rel="preload" as="script" crossorigin></head>
+  <body>
+    <noscript>
+      <strong>We're sorry but Index Page doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  <script type="text/javascript" src="/++plone++learn.plone/js/chunk/chunk-vendors.chunk-vendors.3299404d.js" crossorigin></script><script type="text/javascript" src="/++plone++learn.plone/js/login/index.966ad5515fd109042a5f.js" crossorigin></script></body>
+</html>

@@ -8,7 +8,7 @@ module.exports = {
   publicPath: "${portal_url}/++plone++learn.plone/",
 
   // build時構建檔案的目錄，構建時傳入 --no-clean 可關閉該行為
-  outputDir: "dist", // 當執行 vue-cli-service build 時生成的生產環境構建檔案的目錄
+  outputDir: "../../plone", // 當執行 vue-cli-service build 時生成的生產環境構建檔案的目錄
 
   // build時放置生成的靜態資源 (js、css、img、fonts) 的 (相對於 outputDir 的) 目錄
   assetsDir: "",

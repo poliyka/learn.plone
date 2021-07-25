@@ -11,12 +11,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="/++plone++learn.plone/favicon.ico">
     <title>Sub Page</title>
-  <link href="/++plone++learn.plone/js/chunk/chunk-vendors.c59be24963a21f6701f6.js" rel="preload" as="script" crossorigin><link href="/++plone++learn.plone/js/login/subpage.313613003edef3fd9a75.js" rel="preload" as="script" crossorigin></head>
+  <link href="/++plone++learn.plone/js/chunk/chunk-vendors.5da3ee9284bcf09345bc.js" rel="preload" as="script" crossorigin><link href="/++plone++learn.plone/js/login/subpage.14cf2ea12780109f3f13.js" rel="preload" as="script" crossorigin></head>
   <body>
     <noscript>
       <strong>We're sorry but Sub Page doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
-  <script type="text/javascript" src="/++plone++learn.plone/js/chunk/chunk-vendors.c59be24963a21f6701f6.js" crossorigin></script><script type="text/javascript" src="/++plone++learn.plone/js/login/index.313613003edef3fd9a75.js" crossorigin></script></body>
+  <script type="text/javascript" src="/++plone++learn.plone/js/chunk/chunk-vendors.5da3ee9284bcf09345bc.js" crossorigin></script><script type="text/javascript" src="/++plone++learn.plone/js/login/index.14cf2ea12780109f3f13.js" crossorigin></script></body>
 </html>

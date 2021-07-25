@@ -1,12 +1,18 @@
 <template>
-  <b-button variant="danger">Button</b-button>
+  <div class="main">
+    <Button label="Submit" />
+  </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
+import InputText from 'primevue/inputtext';
+import Button from 'primevue/button';
 
 @Options({
   components: {
+    InputText,
+    Button,
   },
 })
 export default class App extends Vue {}

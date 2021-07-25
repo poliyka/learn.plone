@@ -2,7 +2,7 @@ const path = require("path");
 
 const DIST_DIR = path.resolve(__dirname, "app");
 const SRC_DIR = path.resolve(__dirname, "src");
-const STATIC_DIR = path.resolve(__dirname, "../browser/static/")
+const STATIC_DIR = path.resolve(__dirname, "../browser/static/");
 
 module.exports = {
   // 部署應用時的基本路徑 URL，baseUrl從 Vue CLI 3.3 起，已棄用，使用publicPath來替代
@@ -91,20 +91,23 @@ module.exports = {
   chainWebpack: () => {},
 
   // css的處理
-  css: {
-    // 當為true時，css檔名可省略 module 預設為 false
-    modules: true,
-    // 是否將元件中的 CSS 提取至一個獨立的 CSS 檔案中,當作為一個庫構建時，你也可以將其設定為 false 免得使用者自己匯入 CSS
-    // 預設生產環境下是 true，開發環境下是 false
-    extract: false,
-    // 是否為 CSS 開啟 source map。設定為 true 之後可能會影響構建的效能
-    sourceMap: false,
-    //向 CSS 相關的 loader 傳遞選項(支援 css-loader postcss-loader sass-loader less-loader stylus-loader)
-    loaderOptions: {
-      css: {},
-      less: {},
-    },
-  },
+  // css: {
+  //   // 當為true時，css檔名可省略 module 預設為 false
+  //   modules: true,
+  //   // 是否將元件中的 CSS 提取至一個獨立的 CSS 檔案中,當作為一個庫構建時，你也可以將其設定為 false 免得使用者自己匯入 CSS
+  //   // 預設生產環境下是 true，開發環境下是 false
+  //   extract: false,
+  //   // 是否為 CSS 開啟 source map。設定為 true 之後可能會影響構建的效能
+  //   sourceMap: true,
+  //   //向 CSS 相關的 loader 傳遞選項(支援 css-loader postcss-loader sass-loader less-loader stylus-loader)
+  //   loaderOptions: {
+  //     sass: {
+  //       prependData: `
+  //          @import "@/assets/scss/main.scss";
+  //       `,
+  //     },
+  //   },
+  // },
 
   // 所有 webpack-dev-server 的選項都支援
   devServer: {

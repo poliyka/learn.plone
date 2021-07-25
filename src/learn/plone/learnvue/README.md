@@ -1,5 +1,11 @@
 # learnvue
 
+## Use NPM version
+```
+nvm install 14
+nvm use 14
+```
+
 ## Project setup
 ```
 npm install

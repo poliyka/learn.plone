@@ -4,18 +4,21 @@
   </div>
 </template>
 
+
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
+import { defineComponent } from "vue";
+import HelloWorld from "./components/HelloWorld.vue";
 import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
 
-@Options({
+export default defineComponent({
+  name: "App",
   components: {
+    HelloWorld,
     InputText,
     Button,
   },
-})
-export default class App extends Vue {}
+});
 </script>
 
 <style>

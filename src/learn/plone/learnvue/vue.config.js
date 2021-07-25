@@ -83,8 +83,8 @@ module.exports = {
   // 如果你需要基於環境有條件地設定行為，或者想要直接修改設定，那就換成一個函數 (該函數會在環境變數被設定之後懶執行)。該方法的第一個引數會收到已經解析好的設定。在函數內，你可以直接修改設定，或者返回一個將會被合併的物件
   configureWebpack: {
     output: {
-      filename: "js/login/[name].[contenthash].js",
-      chunkFilename: "js/chunk/[id].[name].[chunkhash:8].js",
+      filename: "js/login/[name].[hash].js",
+      chunkFilename: "js/chunk/[name].[chunkhash].js",
     },
   },
   // 對內部的 webpack 設定（比如修改、增加Loader選項）(鏈式操作)

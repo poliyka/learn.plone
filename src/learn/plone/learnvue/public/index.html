@@ -1,22 +1,36 @@
-<!DOCTYPE html>
-<html lang="">
-  <head>
-    <?python
-    from plone import api
-    portal = api.portal.get()
-    portal_url = portal.portal_url()
-    ?>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xml:lang="en"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  xmlns:v-on="https://vuejs.org/v2/api/#v-on"
+  xmlns:v-bind="https://vuejs.org/v2/api/#v-bind"
+  xmlns:v-slot="https://vuejs.org/v2/api/#v-slot"
+  lang="en"
+  metal:use-macro="context/learn_template/macros/master"
+  i18n:domain="learn.plone"
+>
+
+<metal:link fill-slot="link">
+  <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+  <link
+    rel="stylesheet"
+    href="<%= '${portal_url}' + htmlWebpackPlugin.files.chunks[chunk].css %>"
+  >
+  </link>
+  <%}%>
+</metal:link>
+
+<metal:content-core fill-slot="content-core">
+  <div id="app"></div>
+</metal:content-core>
+
+
+<metal:script fill-slot="script">
+  <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+    <script src="<%= '${portal_url}' + htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+  <%}%>
+</metal:script>
+
 </html>

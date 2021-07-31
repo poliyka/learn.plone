@@ -5,9 +5,9 @@ from zope.interface import implementer
 
 
 @implementer(IMainTemplate)
-class CustomMainTemplate(BrowserView):
+class LearnTemplate(BrowserView):
 
-    main_template_name = 'templates/custom_main_template.pt'
+    main_template_name = 'templates/learn_template.pt'
 
     def __call__(self):
         return ViewPageTemplateFile(self.template_name)

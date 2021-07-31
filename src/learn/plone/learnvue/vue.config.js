@@ -24,40 +24,39 @@ module.exports = {
   pages: {
     index: {
       // page 的入口
-      entry: "src/main.ts",
+      entry: "src/views/index.ts",
       // 模板來源
       template: "public/index.html",
       // 在 dist/index.html 的輸出
       // filename: "views/templates/index_test.pt",
-      filename: "../../views/templates/index_test.pt",
+      filename: "../../views/templates/index.pt",
+      // 是否自動引入js
+      inject: false,
       // 當使用 title 選項時，
       // template 中的 title 標籤需要是
       // <title><%= htmlWebpackPlugin.options.title %></title>
-      title: "Index Page",
+      // title: "Index Page",
       // 在這個頁面中包含的塊，預設情況下會包含
       // 提取出來的通用 chunk 和 vendor chunk。
       chunks: ["chunk-vendors", "chunk-common", "index"],
     },
-    subpage: {
+    learn_template: {
       // page 的入口
-      entry: "src/login/index.ts",
+      entry: "src/views/learn_template.ts",
       // 模板來源
-      template: "public/subpage.html",
+      template: "public/learn_template.html",
       // 在 dist/index.html 的輸出
-      filename: "../../views/templates/subpage.pt",
+      filename: "../../views/templates/learn_template.pt",
+      // 是否自動引入js
+      inject: false,
       // 當使用 title 選項時，
       // template 中的 title 標籤需要是
       // <title><%= htmlWebpackPlugin.options.title %></title>
-      title: "Sub Page",
+      title: "Learn Plone",
       // 在這個頁面中包含的塊，預設情況下會包含
       // 提取出來的通用 chunk 和 vendor chunk。
-      chunks: ["chunk-vendors", "chunk-common", "index"],
+      chunks: ["chunk-vendors", "chunk-common", "template"],
     },
-    // 當使用只有入口的字串格式時，
-    // 模板會被推導為 `public/subpage.html`
-    // 並且如果找不到的話，就回退到 `public/index.html`。
-    // 輸出檔名會被推導為 `subpage.html`。
-    //  subpage: 'src/subpage/main.ts'
   },
 
   // 是否在開發環境下通過 eslint-loader 在每次儲存時 lint 程式碼 (在生產構建時禁用 eslint-loader)
@@ -83,12 +82,13 @@ module.exports = {
   // 如果你需要基於環境有條件地設定行為，或者想要直接修改設定，那就換成一個函數 (該函數會在環境變數被設定之後懶執行)。該方法的第一個引數會收到已經解析好的設定。在函數內，你可以直接修改設定，或者返回一個將會被合併的物件
   configureWebpack: {
     output: {
-      filename: "js/login/[name].[hash].js",
+      filename: "js/views/[name].[hash].js",
       chunkFilename: "js/chunk/[name].[chunkhash].js",
     },
   },
   // 對內部的 webpack 設定（比如修改、增加Loader選項）(鏈式操作)
-  chainWebpack: () => {},
+  chainWebpack: (config) => {
+  },
 
   // css的處理
   // css: {

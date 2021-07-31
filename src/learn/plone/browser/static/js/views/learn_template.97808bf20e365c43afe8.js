@@ -57,7 +57,7 @@
 /******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 	// Promise = chunk loading, 0 = chunk loaded
 /******/ 	var installedChunks = {
-/******/ 		"subpage": 0
+/******/ 		"learn_template": 0
 /******/ 	};
 /******/
 /******/ 	var deferredModules = [];
@@ -155,26 +155,26 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/login/index.ts":
-/*!****************************!*\
-  !*** ./src/login/index.ts ***!
-  \****************************/
+/***/ "./src/views/learn_template.ts":
+/*!*************************************!*\
+  !*** ./src/views/learn_template.ts ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\n__webpack_require__(/*! ./node_modules/core-js/modules/es.array.iterator.js */ \"./node_modules/core-js/modules/es.array.iterator.js\");\n\n__webpack_require__(/*! ./node_modules/core-js/modules/es.promise.js */ \"./node_modules/core-js/modules/es.promise.js\");\n\n__webpack_require__(/*! ./node_modules/core-js/modules/es.object.assign.js */ \"./node_modules/core-js/modules/es.object.assign.js\");\n\n__webpack_require__(/*! ./node_modules/core-js/modules/es.promise.finally.js */ \"./node_modules/core-js/modules/es.promise.finally.js\");\n\nconsole.log(\"Login\");\n\n//# sourceURL=webpack:///./src/login/index.ts?");
+eval("\n\n__webpack_require__(/*! ./node_modules/core-js/modules/es.array.iterator.js */ \"./node_modules/core-js/modules/es.array.iterator.js\");\n\n__webpack_require__(/*! ./node_modules/core-js/modules/es.promise.js */ \"./node_modules/core-js/modules/es.promise.js\");\n\n__webpack_require__(/*! ./node_modules/core-js/modules/es.object.assign.js */ \"./node_modules/core-js/modules/es.object.assign.js\");\n\n__webpack_require__(/*! ./node_modules/core-js/modules/es.promise.finally.js */ \"./node_modules/core-js/modules/es.promise.finally.js\");\n\n//# sourceURL=webpack:///./src/views/learn_template.ts?");
 
 /***/ }),
 
 /***/ 1:
-/*!**********************************!*\
-  !*** multi ./src/login/index.ts ***!
-  \**********************************/
+/*!*******************************************!*\
+  !*** multi ./src/views/learn_template.ts ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__(/*! /home/poliyka/learnPlone/zeocluster/src/learn.plone/src/learn/plone/learnvue/src/login/index.ts */\"./src/login/index.ts\");\n\n\n//# sourceURL=webpack:///multi_./src/login/index.ts?");
+eval("module.exports = __webpack_require__(/*! /home/poliyka/learnPlone/zeocluster/src/learn.plone/src/learn/plone/learnvue/src/views/learn_template.ts */\"./src/views/learn_template.ts\");\n\n\n//# sourceURL=webpack:///multi_./src/views/learn_template.ts?");
 
 /***/ })
 

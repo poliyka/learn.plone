@@ -1,0 +1,57 @@
+<metal:page define-macro="master">
+  <tal:doctype tal:replace="structure string:&lt;!DOCTYPE html&gt;" />
+  <html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xml:lang="en"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    xmlns:metal="http://xml.zope.org/namespaces/metal"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    xmlns:v-on="http://vue.org/namespaces/vue"
+    class="no-js"
+    lang="en"
+    tal:define="plone_layout python:context.restrictedTraverse('@@plone_layout');"
+    i18n:domain="learn.plone"
+  >
+
+    <head>
+      <?python
+      from plone import api
+      portal = api.portal.get()
+      portal_url = portal.portal_url()
+      ?>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width,initial-scale=1.0">
+      <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+      <title><%= htmlWebpackPlugin.options.title %></title>
+
+      <!-- custom css -->
+      <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+      <link
+        rel="stylesheet"
+        href="<%= '${portal_url}' + htmlWebpackPlugin.files.chunks[chunk].css %>"
+      >
+      </link>
+      <%}%>
+      <!-- slot css -->
+      <metal:link define-slot="link"></metal:link>
+    </head>
+    <body>
+      <noscript>
+        <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      </noscript>
+
+      <metal:content-core define-slot="content-core">
+      </metal:content-core>
+
+      <!-- custom js -->
+      <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+        <script src="<%= '${portal_url}' + htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+      <%}%>
+      <!-- slot js -->
+      <metal:script define-slot="script"></metal:script>
+    </body>
+
+
+  </html>
+</metal:page>

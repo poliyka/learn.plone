@@ -1,13 +1,44 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:metal="http://xml.zope.org/namespaces/metal"
-      xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      i18n:domain="learn.plone"
-      metal:use-macro="context/main_template/macros/master">
-<body>
-  <metal:block fill-slot="content-core">
-      <h2 i18n:translate="">Sample View</h2>
-      <p tal:content="view/msg">this gets replaced</p>
-  </metal:block>
-</body>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xml:lang="en"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  xmlns:v-on="https://vuejs.org/v2/api/#v-on"
+  xmlns:v-bind="https://vuejs.org/v2/api/#v-bind"
+  xmlns:v-slot="https://vuejs.org/v2/api/#v-slot"
+  lang="en"
+  metal:use-macro="context/learn_template/macros/master"
+  i18n:domain="learn.plone"
+>
+
+<metal:link fill-slot="link">
+  
+  <link
+    rel="stylesheet"
+    href="${portal_url}"
+  >
+  </link>
+  
+  <link
+    rel="stylesheet"
+    href="${portal_url}"
+  >
+  </link>
+  
+</metal:link>
+
+<metal:content-core fill-slot="content-core">
+  <div id="app"></div>
+</metal:content-core>
+
+
+<metal:script fill-slot="script">
+  
+    <script src="${portal_url}/++plone++learn.plone/js/chunk/chunk-vendors.9a32b2c62ccbdc0413b2.js"></script>
+  
+    <script src="${portal_url}/++plone++learn.plone/js/views/index.97808bf20e365c43afe8.js"></script>
+  
+</metal:script>
+
 </html>

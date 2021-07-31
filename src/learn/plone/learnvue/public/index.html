@@ -16,21 +16,65 @@
   <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
   <link
     rel="stylesheet"
-    href="<%= '${portal_url}' + htmlWebpackPlugin.files.chunks[chunk].css %>"
+    href="<%= VUE_APP_PORTAL_URL + htmlWebpackPlugin.files.chunks[chunk].css %>"
   >
   </link>
   <%}%>
 </metal:link>
 
 <metal:content-core fill-slot="content-core">
-  <div id="app"></div>
-</metal:content-core>
+
+  <div id="app">
+    {{value}}
+  </div>
 
 
-<metal:script fill-slot="script">
-  <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-    <script src="<%= '${portal_url}' + htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
-  <%}%>
+  <div id="card">
+    <!-- <h2>{{value}}</h2> -->
+    <h2>Title</h2>
+  <tal:repeat repeat="product portal/product/listFolderContents">
+
+  <div class="card">
+    <div class="title"><%= '${product/title}' %></div>
+  <div class="icon">
+    <img
+      tal:attributes="src string: <%= '${product/absolute_url}' %>/@@images/thumb"
+      alt="Fruit"
+    >
+  </div>
+  <!--/icon-->
+
+  <div class="features">
+    <p><%= '${product/description}' %></p>
+  </div>
+  <!--/features-->
+
+  <a
+    href="javascript:void(0)"
+    class="btn"
+    onclick="fruit('<%= '${product/title}' %>')"
+  >Check it out</a>
+
+
+  </div>
+  <!--/card-->
+
+  </tal:repeat>
+  </div>
+
+  <script>
+    // function fruit(name){
+    //   alert(name)
+    // }
+  </script>
+
+  </metal:content-core>
+
+
+  <metal:script fill-slot="script">
+    <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+    <script src="<%= VUE_APP_PORTAL_URL + htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+    <%}%>
 </metal:script>
 
 </html>

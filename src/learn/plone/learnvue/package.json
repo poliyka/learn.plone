@@ -5,14 +5,16 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "NODE_ENV=production vue-cli-service build --no-clean",
-    "dist": "NODE_ENV=development vue-cli-service build ",
+    "dist": "NODE_ENV=development vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "test": "NODE_ENV=test mocha --reporter spec"
   },
   "dependencies": {
+    "@types/jquery": "^3.5.6",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "jquery": "^3.6.0",
     "primeflex": "^2.0.0",
     "primeicons": "^4.1.0",
     "primevue": "^3.5.1",

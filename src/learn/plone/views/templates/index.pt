@@ -29,16 +29,60 @@
 </metal:link>
 
 <metal:content-core fill-slot="content-core">
-  <div id="app"></div>
-</metal:content-core>
+
+  <div id="app">
+    {{value}}
+  </div>
 
 
-<metal:script fill-slot="script">
-  
-    <script src="${portal_url}/++plone++learn.plone/js/chunk/chunk-vendors.9a32b2c62ccbdc0413b2.js"></script>
-  
-    <script src="${portal_url}/++plone++learn.plone/js/views/index.97808bf20e365c43afe8.js"></script>
-  
+  <div id="card">
+    <!-- <h2>{{value}}</h2> -->
+    <h2>Title</h2>
+  <tal:repeat repeat="product portal/product/listFolderContents">
+
+  <div class="card">
+    <div class="title">${product/title}</div>
+  <div class="icon">
+    <img
+      tal:attributes="src string: ${product/absolute_url}/@@images/thumb"
+      alt="Fruit"
+    >
+  </div>
+  <!--/icon-->
+
+  <div class="features">
+    <p>${product/description}</p>
+  </div>
+  <!--/features-->
+
+  <a
+    href="javascript:void(0)"
+    class="btn"
+    onclick="fruit('${product/title}')"
+  >Check it out</a>
+
+
+  </div>
+  <!--/card-->
+
+  </tal:repeat>
+  </div>
+
+  <script>
+    // function fruit(name){
+    //   alert(name)
+    // }
+  </script>
+
+  </metal:content-core>
+
+
+  <metal:script fill-slot="script">
+    
+    <script src="${portal_url}/++plone++learn.plone/js/chunk/chunk-vendors.133412b19b97bec730f6.js"></script>
+    
+    <script src="${portal_url}/++plone++learn.plone/js/views/index.ebfe051aac128014b5ed.js"></script>
+    
 </metal:script>
 
 </html>

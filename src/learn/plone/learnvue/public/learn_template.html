@@ -29,7 +29,7 @@
       <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
       <link
         rel="stylesheet"
-        href="<%= '${portal_url}' + htmlWebpackPlugin.files.chunks[chunk].css %>"
+        href="<%= VUE_APP_PORTAL_URL + htmlWebpackPlugin.files.chunks[chunk].css %>"
       >
       </link>
       <%}%>
@@ -46,7 +46,7 @@
 
       <!-- custom js -->
       <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-        <script src="<%= '${portal_url}' + htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+        <script src="<%= VUE_APP_PORTAL_URL + htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
       <%}%>
       <!-- slot js -->
       <metal:script define-slot="script"></metal:script>

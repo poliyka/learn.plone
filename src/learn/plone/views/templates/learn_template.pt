@@ -46,7 +46,7 @@
 
       <!-- custom js -->
       
-        <script src="${portal_url}/++plone++learn.plone/js/chunk/chunk-vendors.9a32b2c62ccbdc0413b2.js"></script>
+        <script src="${portal_url}/++plone++learn.plone/js/chunk/chunk-vendors.133412b19b97bec730f6.js"></script>
       
       <!-- slot js -->
       <metal:script define-slot="script"></metal:script>

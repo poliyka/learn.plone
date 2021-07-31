@@ -11,6 +11,5 @@ class Index(BrowserView):
     # the configure.zcml registration of this view.
     template = ViewPageTemplateFile('templates/index.pt')
     def __call__(self):
-        # Implement your own actions:
-        self.msg = _(u'A small message')
+
         return self.template()

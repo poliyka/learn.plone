@@ -11,14 +11,12 @@
   metal:use-macro="context/learn_template/macros/master"
   i18n:domain="learn.plone"
 >
-
 <metal:link fill-slot="link">
   <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
   <link
     rel="stylesheet"
     href="<%= VUE_APP_PORTAL_URL + htmlWebpackPlugin.files.chunks[chunk].css %>"
-  >
-  </link>
+  />
   <%}%>
 </metal:link>
 
@@ -52,7 +50,6 @@
   <a
     href="javascript:void(0)"
     class="btn"
-    onclick="fruit('<%= '${product/title}' %>')"
   >Check it out</a>
 
 
@@ -66,6 +63,7 @@
     // function fruit(name){
     //   alert(name)
     // }
+
   </script>
 
   </metal:content-core>

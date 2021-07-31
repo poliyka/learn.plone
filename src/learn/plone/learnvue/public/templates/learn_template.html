@@ -53,6 +53,7 @@
     <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
     <script src="<%= VUE_APP_PORTAL_URL + htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
     <%}%>
+    <script src="https://unpkg.com/vue@next"></script>
       <!-- slot js -->
       <metal:script define-slot="script"></metal:script>
     </body>

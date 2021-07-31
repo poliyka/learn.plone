@@ -11,33 +11,31 @@
   metal:use-macro="context/learn_template/macros/master"
   i18n:domain="learn.plone"
 >
-
 <metal:link fill-slot="link">
   
   <link
     rel="stylesheet"
     href="${portal_url}"
-  >
-  </link>
+  />
   
   <link
     rel="stylesheet"
     href="${portal_url}"
-  >
-  </link>
+  />
   
 </metal:link>
 
 <metal:content-core fill-slot="content-core">
 
   <div id="app">
-    {{value}}
+    <!-- always disappear -->
+    This line will be replace.
   </div>
 
 
   <div id="card">
-    <!-- <h2>{{value}}</h2> -->
-    <h2>Title</h2>
+    <!-- good work on vue3 cdn -->
+    <h2 style="color: white" v-html="value"></h2>
   <tal:repeat repeat="product portal/product/listFolderContents">
 
   <div class="card">
@@ -58,7 +56,7 @@
   <a
     href="javascript:void(0)"
     class="btn"
-    onclick="fruit('${product/title}')"
+    v-on:click="fruit('${product/title}')"
   >Check it out</a>
 
 
@@ -68,21 +66,17 @@
   </tal:repeat>
   </div>
 
-  <script>
-    // function fruit(name){
-    //   alert(name)
-    // }
-  </script>
 
   </metal:content-core>
 
 
   <metal:script fill-slot="script">
     
-    <script src="${portal_url}/++plone++learn.plone/js/chunk/chunk-vendors.133412b19b97bec730f6.js"></script>
+    <script src="${portal_url}/++plone++learn.plone/js/chunk/chunk-vendors.f0e892fa20b4cd501095.js"></script>
     
-    <script src="${portal_url}/++plone++learn.plone/js/views/index.ebfe051aac128014b5ed.js"></script>
+    <script src="${portal_url}/++plone++learn.plone/js/views/index.27a7677a180b2eb5b0c0.js"></script>
     
+    <script src="${portal_url}/++plone++learn.plone/index.js"></script>
 </metal:script>
 
 </html>

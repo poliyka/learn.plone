@@ -27,7 +27,7 @@ module.exports = {
       // page 的入口
       entry: "src/views/index.ts",
       // 模板來源
-      template: "public/index.html",
+      template: "public/templates/index.html",
       // 在 dist/index.html 的輸出
       // filename: "views/templates/index_test.pt",
       filename: "../../views/templates/index.pt",
@@ -42,20 +42,11 @@ module.exports = {
       chunks: ["chunk-vendors", "chunk-common", "index"],
     },
     learn_template: {
-      // page 的入口
       entry: "src/views/learn_template.ts",
-      // 模板來源
-      template: "public/learn_template.html",
-      // 在 dist/index.html 的輸出
+      template: "public/templates/learn_template.html",
       filename: "../../views/templates/learn_template.pt",
-      // 是否自動引入js
       inject: false,
-      // 當使用 title 選項時，
-      // template 中的 title 標籤需要是
-      // <title><%= htmlWebpackPlugin.options.title %></title>
       title: "Learn Plone",
-      // 在這個頁面中包含的塊，預設情況下會包含
-      // 提取出來的通用 chunk 和 vendor chunk。
       chunks: ["chunk-vendors", "chunk-common", "template"],
     },
   },

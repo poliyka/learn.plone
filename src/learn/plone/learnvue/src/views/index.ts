@@ -1,5 +1,5 @@
 import { createApp } from "vue";
-import App from "@/App.vue";
+import Index from "@/components/Index.vue";
 import store from "@/store";
 
 import PrimeVue from "primevue/config";
@@ -10,7 +10,7 @@ import "primeicons/primeicons.css";
 import "@/assets/scss/main.scss";
 import $ from "jquery";
 
-const app = createApp(App);
+const app = createApp(Index);
 
 app.use(PrimeVue);
 app.use(store);

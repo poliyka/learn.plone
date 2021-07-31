@@ -1,10 +1,11 @@
 <template>
-  <div style="display: inline-flex">
+  <div>
+    <h2 style="color: white" v-html="value"></h2>
     <Card style="width: 20rem; margin: 5px">
       <template #header>
         <img
           alt="user header"
-          src="#"
+          src="@/assets/img/4.jpg"
         >
       </template>
       <template #title>
@@ -34,20 +35,18 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
 import InputText from "primevue/inputtext";
 import Button from "primevue/button";
 import Card from "primevue/card";
 
 export default defineComponent({
-  name: "App",
+  name: "Index",
   data() {
     return {
-      value: "value",
+      value: "&darr;&darr;Always child replace innerHTML&darr;&darr;",
     };
   },
   components: {
-    HelloWorld,
     InputText,
     Button,
     Card,

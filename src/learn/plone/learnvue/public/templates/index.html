@@ -23,13 +23,14 @@
 <metal:content-core fill-slot="content-core">
 
   <div id="app">
-    {{value}}
+    <!-- always disappear -->
+    This line will be replace.
   </div>
 
 
   <div id="card">
-    <!-- <h2>{{value}}</h2> -->
-    <h2>Title</h2>
+    <!-- good work on vue3 cdn -->
+    <h2 style="color: white" v-html="value"></h2>
   <tal:repeat repeat="product portal/product/listFolderContents">
 
   <div class="card">
@@ -50,6 +51,7 @@
   <a
     href="javascript:void(0)"
     class="btn"
+    v-on:click="fruit('<%= '${product/title}' %>')"
   >Check it out</a>
 
 
@@ -59,12 +61,6 @@
   </tal:repeat>
   </div>
 
-  <script>
-    // function fruit(name){
-    //   alert(name)
-    // }
-
-  </script>
 
   </metal:content-core>
 
@@ -73,6 +69,7 @@
     <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
     <script src="<%= VUE_APP_PORTAL_URL + htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
     <%}%>
+    <script src="<%= VUE_APP_PORTAL_URL %>/++plone++learn.plone/index.js"></script>
 </metal:script>
 
 </html>

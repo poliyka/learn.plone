@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from learn.plone import _
-from Products.Five.browser import BrowserView
 from plone import api
-
-
+from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 

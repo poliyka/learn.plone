@@ -6,6 +6,12 @@
   <configure zcml:condition="installed AccessControl.security">
   <!-- -*- extra stuff goes here -*- -->
 
+    <permission
+        id="learn.plone.AddProduct"
+        title="learn.plone: Add Product"
+    />
+
+
 
   </configure>
 

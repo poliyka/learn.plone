@@ -1,20 +1,15 @@
 import sqlalchemy as sa
 from sqlalchemy.orm import relationship
 from learn.plone.models import BaseModel
-import enum
 
 
-class MyEnum(enum.Enum):
-    one = 1
-    two = 2
-    three = 3
-
-
-user_tag_rel = sa.Table(
-    "user_tag_rel",
+user_to_tag = sa.Table(
+    "user_to_tag",
     BaseModel.metadata,
-    sa.Column("tag_rt", sa.Integer, sa.ForeignKey("tags.id")),
-    sa.Column("user_rt", sa.Integer, sa.ForeignKey("users.id")),
+    sa.Column("tag_id", sa.Integer, sa.ForeignKey("tags.id")),
+    sa.Column("user_id", sa.Integer, sa.ForeignKey("users.id")),
+    sa.Column("other_field", sa.String(30)),
+    extend_existing=True,
 )
 
 
@@ -22,13 +17,34 @@ class User(BaseModel):
     __tablename__ = "users"
     __repr_attrs__ = ["name", "fullname"]
 
-    id = sa.Column(sa.Integer, primary_key=True)
     name = sa.Column(sa.String(128))
+    identity = sa.Column(sa.String(64), unique=True)
+    age = sa.Column(sa.Integer(), default=0)
     fullname = sa.Column(sa.String(128))
     nickname = sa.Column(sa.String(128))
-    addresses = relationship("Address", uselist=True, backref="users", lazy=True)
-    stores = relationship("Store", uselist=True, backref="users", lazy=True)
-    tag_rel = relationship("Tag", secondary=user_tag_rel, backref="users", lazy=True)
+    address_ids = relationship("Address", uselist=True, backref="users", lazy=True)
+    store_ids = relationship("Store", uselist=True, backref="users", lazy=True)
+    tag_ids = relationship("Tag", secondary=user_to_tag, backref="users", lazy=True)
+
+
+@sa.event.listens_for(User, "before_insert")
+def receive_after_insert(mapper, connection, target):
+    "listen for the 'before_insert' event"
+
+
+@sa.event.listens_for(User, "after_insert")
+def receive_after_insert(mapper, connection, target):
+    "listen for the 'after_insert' event"
+
+
+@sa.event.listens_for(User, "before_update")
+def receive_before_update(mapper, connection, target):
+    "listen for the 'before_update' event"
+
+
+@sa.event.listens_for(User, "after_update")
+def receive_before_update(mapper, connection, target):
+    "listen for the 'after_update' event"
 
     # https://docs.sqlalchemy.org/en/13/core/type_basics.html
     # BigInteger = sa.Column(sa.BigInteger)
@@ -54,7 +70,6 @@ class Address(BaseModel):
     __tablename__ = "user_address"
     __repr_attrs__ = ["address"]
 
-    id = sa.Column(sa.Integer, primary_key=True)
     address = sa.Column(sa.String(128), nullable=False)
     user_id = sa.Column(sa.Integer, sa.ForeignKey("users.id", ondelete="SET NULL"))
     store_id = sa.Column(sa.Integer, sa.ForeignKey("stores.id", ondelete="SET NULL"))

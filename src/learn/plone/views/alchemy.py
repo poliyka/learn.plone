@@ -14,6 +14,43 @@ import sqlalchemy as sa
 
 import threading
 import transaction
+from pprint import pprint
+
+
+def printR(word):
+    print("\033[91m", end="")
+    pprint(word)
+    print("\033[0m", end="")
+
+
+def printG(word):
+    print("\033[92m", end="")
+    pprint(word)
+    print("\033[0m", end="")
+
+
+def printY(word):
+    print("\033[93m", end="")
+    pprint(word)
+    print("\033[0m", end="")
+
+
+def printB(word):
+    print("\033[94m", end="")
+    pprint(word)
+    print("\033[0m", end="")
+
+
+def printP(word):
+    print("\033[95m", end="")
+    pprint(word)
+    print("\033[0m", end="")
+
+
+def printC(word):
+    print("\033[96m", end="")
+    pprint(word)
+    print("\033[0m", end="")
 
 
 class Alchemy(BrowserView):
@@ -32,7 +69,8 @@ class Alchemy(BrowserView):
                 User(name="fred", fullname="Fred Flintstone", nickname="freddy"),
             ]
         )
-        session.commit()
+
+        transaction.commit()
 
     def update_data(self, session):
         # 2.0
@@ -56,17 +94,18 @@ class Alchemy(BrowserView):
                 "fullname": "ed Andy",
             }
         )
-        session.commit()
+        transaction.commit()
 
         # single
         ed_user = session.query(User).filter(User.name == "ed").first()
         ed_user.fullname = "Ed test"
-        session.commit()
+
+        transaction.commit()
 
     def transaction_data(self, session):
         stmt = select([User.age], User.name == "new")
         age = session.execute(stmt).scalars().first()
-        print("age: " + str(age))
+        printC("age: " + str(age))
         stmt = (
             update(User)
             .where(User.name == "new")
@@ -80,23 +119,22 @@ class Alchemy(BrowserView):
         session.execute(stmt)
         transaction.commit()
 
-
     def select_data(self, session):
         # Get all User Object
-        session.execute(select(User)).scalars().all()
+        printC(session.execute(select(User)).scalars().all())
 
         # query in ids
         stmt = select([User.name], User.id.in_([1, 2, 3, 4]))
-        select_result = session.execute(stmt).scalars().all()
+        printC(session.execute(stmt).scalars().all())
 
         # list emits a deprecation warning
         stmt = select([User.name, User.identity])
 
         # Return the first element.
-        print(session.execute(stmt).scalars().all())
+        printC(session.execute(stmt).scalars().all())
 
         # Return all element.
-        print(session.execute(stmt).mappings().all())
+        printC(session.execute(stmt).mappings().all())
 
         # Use case set new label
         case_clause = sa.case(
@@ -104,8 +142,7 @@ class Alchemy(BrowserView):
             else_="neither three nor seven",
         ).label("newLabel")
         stmt = select(User, case_clause)
-        print(session.execute(stmt).mappings().all())
-
+        printC(session.execute(stmt).mappings().all())
 
     def __call__(self):
         """

@@ -27,12 +27,12 @@ if package_path not in sys.path:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-from learn.plone.models import Base
+from learn.plone.models import BaseModel
 
 from learn.plone.models.user import User, Address
 from learn.plone.models.store import Store
 
-target_metadata = Base.metadata
+target_metadata = BaseModel.metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:

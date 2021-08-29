@@ -22,29 +22,9 @@ class User(BaseModel):
     age = sa.Column(sa.Integer(), default=0)
     fullname = sa.Column(sa.String(128))
     nickname = sa.Column(sa.String(128))
-    address_ids = relationship("Address", uselist=True, backref="users", lazy=True)
-    store_ids = relationship("Store", uselist=True, backref="users", lazy=True)
-    tag_ids = relationship("Tag", secondary=user_to_tag, backref="users", lazy=True)
-
-
-@sa.event.listens_for(User, "before_insert")
-def receive_after_insert(mapper, connection, target):
-    "listen for the 'before_insert' event"
-
-
-@sa.event.listens_for(User, "after_insert")
-def receive_after_insert(mapper, connection, target):
-    "listen for the 'after_insert' event"
-
-
-@sa.event.listens_for(User, "before_update")
-def receive_before_update(mapper, connection, target):
-    "listen for the 'before_update' event"
-
-
-@sa.event.listens_for(User, "after_update")
-def receive_before_update(mapper, connection, target):
-    "listen for the 'after_update' event"
+    address_ids = relationship("user.Address", uselist=True, backref="users", lazy=True)
+    store_ids = relationship("store.Store", uselist=True, backref="users", lazy=True)
+    tag_ids = relationship("store.Tag", secondary=user_to_tag, backref="users", lazy=True)
 
     # https://docs.sqlalchemy.org/en/13/core/type_basics.html
     # BigInteger = sa.Column(sa.BigInteger)
@@ -65,14 +45,32 @@ def receive_before_update(mapper, connection, target):
     # Unicode = sa.Column(sa.Unicode)
     # UnicodeText = sa.Column(sa.UnicodeText)
 
+# event
+@sa.event.listens_for(User, "before_insert")
+def receive_before_insert(mapper, connection, target):
+    "listen for the 'before_insert' event"
+
+
+@sa.event.listens_for(User, "after_insert")
+def receive_after_insert(mapper, connection, target):
+    "listen for the 'after_insert' event"
+
+
+@sa.event.listens_for(User, "before_update")
+def receive_before_update(mapper, connection, target):
+    "listen for the 'before_update' event"
+
+
+@sa.event.listens_for(User, "after_update")
+def receive_after_update(mapper, connection, target):
+    "listen for the 'after_update' event"
+
+
 
 class Address(BaseModel):
-    __tablename__ = "user_address"
+    __tablename__ = "address"
     __repr_attrs__ = ["address"]
 
     address = sa.Column(sa.String(128), nullable=False)
     user_id = sa.Column(sa.Integer, sa.ForeignKey("users.id", ondelete="SET NULL"))
     store_id = sa.Column(sa.Integer, sa.ForeignKey("stores.id", ondelete="SET NULL"))
-
-    def __init__(self, address):
-        self.address = address

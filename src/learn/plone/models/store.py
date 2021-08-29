@@ -10,12 +10,10 @@ class Store(BaseModel):
     store_id = sa.Column(sa.Integer, unique=True)
     store_name = sa.Column(sa.String(128), nullable=False)
     store_area = sa.Column(sa.String(128), nullable=True)
-    create_time = sa.Column(
-        "Testing create time", sa.DateTime, server_default=sa.text("NOW()")
-    )
+    create_time = sa.Column(sa.DateTime, server_default=sa.text("NOW()"))
     user_id = sa.Column(sa.Integer, sa.ForeignKey("users.id", ondelete="SET NULL"))
     # one to one Use uselist=False
-    address_ids = relationship("Address", uselist=False, backref="stores", lazy=True)
+    address_ids = relationship("user.Address", uselist=False, backref="stores", lazy=True)
 
 
 class Tag(BaseModel):
@@ -24,9 +22,4 @@ class Tag(BaseModel):
 
     tag_type = sa.Column(sa.String(30))
     insert_time = sa.Column(sa.DateTime, server_default=sa.text("NOW()"))
-    update_time = sa.Column(
-        sa.DateTime, onupdate=sa.text("NOW()"), server_default=sa.text("NOW()")
-    )
-
-    def __init__(self, tag_type):
-        self.tag_type = tag_type
+    update_time = sa.Column(sa.DateTime, onupdate=sa.text("NOW()"), server_default=sa.text("NOW()"))

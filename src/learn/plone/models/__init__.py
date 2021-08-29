@@ -1,13 +1,10 @@
-from sqlalchemy.orm import registry
-from sqlalchemy_mixins import AllFeaturesMixin
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.orm import declarative_mixin
-from sqlalchemy.orm import declared_attr
-import sqlalchemy as sa
-
 import configparser
 import os
+
+import sqlalchemy as sa
+from plone.sqlalchemy.engine import Engine
+from sqlalchemy.orm import declarative_mixin, declared_attr, registry, sessionmaker
+from sqlalchemy_mixins import AllFeaturesMixin
 
 
 class AlembicNotFoundError(Exception):
@@ -23,7 +20,6 @@ mapper_registry = registry()
 Base = mapper_registry.generate_base()
 
 
-
 # Mixin
 @declarative_mixin
 class BaseMixin:
@@ -32,7 +28,7 @@ class BaseMixin:
         return cls.__name__.lower()
 
     # __table_args__ = {"mysql_engine": "InnoDB"}
-    __table_args__ = {'extend_existing': True}
+    __table_args__ = {"keep_existing": True}
     __mapper_args__ = {"always_refresh": True}
     id = sa.Column(sa.Integer, primary_key=True)
 
@@ -50,11 +46,15 @@ config.read(alembic_path)
 if not config:
     raise AlembicNotFoundError("File: [alembic.ini] not found! Please check your file path.")
 
-sqlString = config.get("alembic", "sqlalchemy.url")
-if not sqlString:
+db_string = config.get("alembic", "sqlalchemy.url")
+if not db_string:
     raise SqlalchemyUrlEmpty("[alembic] sqlalchemy.url not have value!")
 
-db = create_engine(sqlString, echo=True)
-session = sessionmaker(bind=db)
-
-BaseModel.set_session(session())
+execution_options = {"isolation_level": "READ UNCOMMITTED", "logging_token": "SqlalchemyMixin"}
+engine = Engine(
+    db_string=db_string,
+    echo=True,
+    execution_options=execution_options,
+)
+session = engine.Session()
+BaseModel.set_session(session)
